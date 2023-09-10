@@ -9,8 +9,15 @@ import Foundation
 
 struct Cafeteria: Identifiable {
     let id: UUID
+    //    let type: CafeteriaType
     let type: CafeteriaType
     let menu: [String]
+    
+    //    enum CodingKeys: String, CodingKey {
+    //        case id
+    //        case company
+    //        case menu = "mainMenu"
+    //    }
 }
 
 enum CafeteriaType: String {
