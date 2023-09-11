@@ -20,22 +20,20 @@ final class MenuBoardManager {
     
     var baseURL = "http://13.209.94.162:8080"
     
-    func fetchData(completion: @escaping NetworkCompletion) {
+    func fetchData(date: String, completion: @escaping NetworkCompletion) {
         print(#function)
-        performRequest(with: baseURL + "/v1/diet") { result in
+        performRequest(with: baseURL + "/v1/diet", date: date) { result in
             completion(result)
         }
     }
     
-    func performRequest(with urlString: String, completion: @escaping NetworkCompletion) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        let dateString = dateFormatter.string(from: Date())
+    func performRequest(with urlString: String, date: String, completion: @escaping NetworkCompletion) {
+        
         
         var urlComponents = URLComponents(string: urlString)
         urlComponents?.queryItems = [
             URLQueryItem(name: "type", value: "LUNCH"),
-            URLQueryItem(name: "date", value: dateString)
+            URLQueryItem(name: "date", value: date)
         ]
 
         guard let requestURL = urlComponents?.url else {
