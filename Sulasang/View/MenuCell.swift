@@ -37,6 +37,7 @@ struct MenuCell: View {
                         .padding(.leading, 12)
                         .padding(.bottom, 4)
                     Spacer()
+                        
                 }
             }
             .padding(.bottom, 8)
@@ -45,7 +46,9 @@ struct MenuCell: View {
         .cornerRadius(12)
         .padding(.horizontal, 20)
         .padding(.bottom, 16)
+        .shadow(radius: 3)
         .background(Color(uiColor: .systemGray6))
+        
     }
     
 }
