@@ -1,6 +1,6 @@
-# iOS
+# 수라상 - 수원대 학식 어플(2023.09.09 ~ 2023.09.11)
 
 | 런치 스크린                          | 메인 페이지                          |
 | --------------------------------- | --------------------------------- |
-| ![런치 스크린](https://github.com/Sulasang/iOS/assets/49385546/f45640c8-4e65-431e-a382-5339062a5752) | ![메인 페이지]([링크_또는_이미지_경로2](https://github.com/Sulasang/iOS/assets/49385546/a5c83177-e3fd-4a84-979c-fa601dec8dc3)) |
+| ![런치 스크린](https://github.com/Sulasang/iOS/assets/49385546/f45640c8-4e65-431e-a382-5339062a5752) | ![메인 페이지](https://github.com/Sulasang/iOS/assets/49385546/a5c83177-e3fd-4a84-979c-fa601dec8dc3) |
 
