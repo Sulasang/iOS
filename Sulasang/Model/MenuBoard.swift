@@ -7,20 +7,13 @@
 
 import Foundation
 
-struct Cafeteria: Identifiable {
+struct MenuBoard: Identifiable {
     let id: UUID
-    //    let type: CafeteriaType
-    let type: CafeteriaType
+    let type: CompanyType
     let menu: [String]
-    
-    //    enum CodingKeys: String, CodingKey {
-    //        case id
-    //        case company
-    //        case menu = "mainMenu"
-    //    }
 }
 
-enum CafeteriaType: String {
+enum CompanyType: String {
     case chefTable = "Chef Table"
     case littleKitchen = "Little Kitchen"
     case momsCook = "Mom's Cook"
