@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MenuBoard: Identifiable {
+struct MenuBoard: Identifiable, Equatable {
     let id: UUID
     let type: CompanyType
     let menu: [String]

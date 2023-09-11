@@ -15,20 +15,18 @@ enum NetworkError: Error {
 }
 
 final class MenuBoardManager {
-    //
+    
     typealias NetworkCompletion = (Result<[DateAndTypeDietInfoDTO], NetworkError>) -> Void
     
     var baseURL = "http://13.209.94.162:8080"
     
     func fetchData(date: String, completion: @escaping NetworkCompletion) {
-        print(#function)
         performRequest(with: baseURL + "/v1/diet", date: date) { result in
             completion(result)
         }
     }
     
     func performRequest(with urlString: String, date: String, completion: @escaping NetworkCompletion) {
-        
         
         var urlComponents = URLComponents(string: urlString)
         urlComponents?.queryItems = [
@@ -60,7 +58,6 @@ final class MenuBoardManager {
             } else {
                 completion(.failure(.parseError))
             }
-            
         }
         task.resume()
     }
