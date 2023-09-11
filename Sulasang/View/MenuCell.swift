@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MenuCell: View {
     
-    var cafeteria: Cafeteria
+    var menuBoard: MenuBoard
     
     var body: some View {
         VStack(spacing: 0) {
@@ -20,7 +20,7 @@ struct MenuCell: View {
                 .frame(height: 31)
                 .overlay {
                     HStack(spacing: 0) {
-                        Text(cafeteria.type.rawValue)
+                        Text(menuBoard.type.rawValue)
                             .foregroundColor(.secondColor)
                             .font(.system(size: 14, weight: .semibold))
                             .padding(.leading, 12)
@@ -30,9 +30,9 @@ struct MenuCell: View {
                 .padding(.bottom, 8)
             
             //MARK: 학식 메뉴들
-            ForEach(cafeteria.menu.indices, id: \.self) { index in
+            ForEach(menuBoard.menu.indices, id: \.self) { index in
                 HStack(spacing: 0) {
-                    Text(cafeteria.menu[index])
+                    Text(menuBoard.menu[index])
                         .font(.system(size: 14, weight: .medium))
                         .padding(.leading, 12)
                         .padding(.bottom, 4)
@@ -52,7 +52,7 @@ struct MenuCell: View {
 
 struct MenuCell_Previews: PreviewProvider {
     static var previews: some View {
-        MenuCell(cafeteria: Cafeteria(id: UUID(),
+        MenuCell(menuBoard: MenuBoard(id: UUID(),
                                       type: .staff,
                                       menu: ["밥", "김", "김치", "소세지", "밥", "김", "김치", "소세지"]))
     }
