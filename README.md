@@ -9,3 +9,12 @@
 - MVP로 빠르게 불편함을 해결하기 위한 목적
 - 직접 디자인하여 빠르개 개발함
 - 피그마 링크 : https://www.figma.com/file/FTBelOagptucAuD31tDr8Q/Untitled?type=design&node-id=0%3A1&mode=design&t=SMaHjyA1GMz3oKtr-1
+
+### 학습하며 적용한 기술
+- SwiftUI
+- URLSession
+- ViewBuilder
+- MVO Pattern
+- typealias
+
+### 이후 방향성
