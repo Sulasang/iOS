@@ -9,32 +9,57 @@ import SwiftUI
 
 struct MainView: View {
     
-    var observable = MainObservable()
+    @ObservedObject var observable = MainObservable()
     
     var body: some View {
         ZStack {
             Color(uiColor: .systemGray6)
                 .ignoresSafeArea()
-            VStack(spacing: 0) {
-                Text("09월 08일 (금)")
-                    .font(.system(size: 34, weight: .bold))
-                    .foregroundColor(.mainColor)
-                    .padding(.top)
-                    .padding(.bottom, 16)
-                Text("11:30 ~ 14:00")
-                    .font(.system(size: 18, weight: .bold))
-                    .padding(.bottom, 16)
-                menuList
-                    .background(Color(uiColor: .systemGray6))
+            TabView {
+                todayPage
+                nextDayPage
             }
+            .ignoresSafeArea()
+            .tabViewStyle(.page(indexDisplayMode: .always))
+        }
+        
+    }
+    
+    @ViewBuilder
+    var todayPage: some View {
+        VStack(spacing: 0) {
+            Text(observable.today)
+                .font(.system(size: 34, weight: .bold))
+                .foregroundColor(.mainColor)
+                .padding(.top)
+                .padding(.bottom, 16)
+            Text("11:30 ~ 14:00")
+                .font(.system(size: 18, weight: .bold))
+                .padding(.bottom, 16)
+            menuList(menuBoard: observable.todayMenuBoard)
+                .background(Color(uiColor: .systemGray6))
         }
     }
     
-    var menuList: some View {
-        List {
+    @ViewBuilder
+    var nextDayPage: some View {
+        Text(observable.nextDay)
+            .font(.system(size: 34, weight: .bold))
+            .foregroundColor(.mainColor)
+            .padding(.top)
+            .padding(.bottom, 16)
+        Text("11:30 ~ 14:00")
+            .font(.system(size: 18, weight: .bold))
+            .padding(.bottom, 16)
+        menuList(menuBoard: observable.nextDayMenuBoard)
+            .background(Color(uiColor: .systemGray6))
+    }
+    
+    func menuList(menuBoard: [MenuBoard]) -> some View {
+        return List {
             VStack(spacing: 0) {
-                ForEach(observable.cafeteria) { cafeteria in
-                    MenuCell(cafeteria: cafeteria)
+                ForEach(menuBoard) { menuBoard in
+                    MenuCell(menuBoard: menuBoard)
                 }
             }
             .listRowInsets(EdgeInsets())
@@ -43,6 +68,10 @@ struct MainView: View {
         .listStyle(.plain)
     }
     
+    var emptyMenu: some View {
+        Rectangle()
+            .padding(.horizontal, 20)
+    }
     
 }
 
