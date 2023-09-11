@@ -18,3 +18,11 @@
 - typealias
 
 ### 이후 방향성
+- 클린 아키텍처 적용
+- URLSession completionHandler to async / await
+- Unit Test
+- 에러 처리
+- enum 더 잘 활용하기
+
+### Version
+🍏 1.0, 앱스토어 배포, MVP : 업체별 상이한 학식 메뉴 제공
