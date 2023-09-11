@@ -7,11 +7,30 @@
 
 import Foundation
 
+enum DayToGetMenu {
+    case today
+    case nextDay
+}
+
+enum DateFormatterType {
+    case dateToGet
+    case dateToPrint
+    
+    var dateFormat: String {
+        switch self {
+        case .dateToGet:
+            return "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        case .dateToPrint:
+            return "MM월 dd일 (E)"
+        }
+    }
+}
+
 final class MainObservable: ObservableObject {
     
     let menuBoardManager = MenuBoardManager()
-    @Published var todayMenuBoard: [MenuBoard] = []
-    @Published var nextDayMenuBoard: [MenuBoard] = []
+    @Published var todayMenuBoard: [MenuBoard]?
+    @Published var nextDayMenuBoard: [MenuBoard]?
     var today = ""
     var nextDay = ""
     
@@ -24,13 +43,15 @@ final class MainObservable: ObservableObject {
     
     func fetchMenuBoard(day: DayToGetMenu) {
         let date = dateToString(day: day)
-        
         menuBoardManager.fetchData(date: date) { [weak self] result in
             switch result {
             case .success(let result):
-                let fetchMenuBoard = result.map {
-                    MenuBoard(id: UUID(), type: CompanyType(rawValue: $0.company) ?? .staff, menu: $0.mainMenu)
-                }
+                let fetchMenuBoard = result
+                                        .map {
+                                            MenuBoard(id: UUID(), type: CompanyType(rawValue: $0.company) ?? .staff, menu: $0.mainMenu)
+                                        }.sorted {
+                                            $0.type.rawValue < $1.type.rawValue
+                                        }
                 DispatchQueue.main.async {
                     switch day {
                     case .today:
@@ -38,7 +59,6 @@ final class MainObservable: ObservableObject {
                     case .nextDay:
                         self?.nextDayMenuBoard = fetchMenuBoard
                     }
-                    
                 }
             case .failure(let error):
                 print("@Log Observable - \(error.localizedDescription)")
@@ -69,23 +89,4 @@ final class MainObservable: ObservableObject {
         return calendar.date(byAdding: .day, value: 1, to: Date()) ?? Date()
     }
     
-}
-
-enum DayToGetMenu {
-    case today
-    case nextDay
-}
-
-enum DateFormatterType {
-    case dateToGet
-    case dateToPrint
-    
-    var dateFormat: String {
-        switch self {
-        case .dateToGet:
-            return "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        case .dateToPrint:
-            return "MM월 dd일 (E)"
-        }
-    }
 }
