@@ -33,6 +33,7 @@ struct MenuCell: View {
             ForEach(menuBoard.menu.indices, id: \.self) { index in
                 HStack(spacing: 0) {
                     Text(menuBoard.menu[index])
+                        .foregroundColor(.black)
                         .font(.system(size: 14, weight: .medium))
                         .padding(.leading, 12)
                         .padding(.bottom, 4)

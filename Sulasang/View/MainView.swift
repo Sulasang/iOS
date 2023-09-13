@@ -140,7 +140,6 @@ struct MainView: View {
                         .foregroundColor(.black)
                 }
             }
-        
     }
     
 }
