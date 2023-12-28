@@ -6,7 +6,6 @@
 - 매일 바뀌는 학식을 간편하게 볼 방법의 부재
 - MVP로 빠르게 불편함을 해결하기 위한 목적
 - 직접 디자인하여 빠르게 개발함
-- [피그마](https://www.figma.com/file/FTBelOagptucAuD31tDr8Q/Untitled?type=design&node-id=0%3A1&mode=design&t=SMaHjyA1GMz3oKtr-1) 
 
 ### 학습하며 적용한 기술
 - SwiftUI
